@@ -11,8 +11,10 @@ User = get_user_model()
 
 
 class ApiViewsTests(TestCase):
-    """Создаем тестовую модель артикула продукта и
-    тестовую модель пользователя."""
+    """
+    We create a test model of the product article and a test model of the user.
+    """
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -27,7 +29,10 @@ class ApiViewsTests(TestCase):
         )
 
     def setUp(self):
-        """Создаем клиент гостя и зарегистрированного пользователя."""
+        """
+        We create a guest client and a registered user.
+        """
+
         self.authorized_client = APIClient()
         djoser_jwt_create_url = '/api/auth/jwt/create/'
         token_response = self.authorized_client.post(
@@ -42,7 +47,10 @@ class ApiViewsTests(TestCase):
         )
 
     def test_create_product(self):
-        """Post запрос создает запись в Pruduct."""
+        """
+        The post request creates a record in Product.
+        """
+
         product_count = Product.objects.count()
         data = {
             "vendor_code": 22223333
@@ -61,7 +69,10 @@ class ApiViewsTests(TestCase):
         self.assertEqual(new_product.user, ApiViewsTests.user)
 
     def test_delete_product(self):
-        """Delete запрос удаляет запись из Product."""
+        """
+        The Delete query deletes a record from Product.
+        """
+
         product_count = Product.objects.count()
         data = {
             "vendor_code": 22223333
@@ -78,7 +89,10 @@ class ApiViewsTests(TestCase):
         self.assertEqual(Product.objects.count(), product_count - 1)
 
     def test_create_user(self):
-        """Post запрос создает запись в User."""
+        """
+        The post request creates a record in User.
+        """
+
         user_count = User.objects.count()
         data = {
             "username": 'niko2',

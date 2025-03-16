@@ -7,7 +7,10 @@ from rest_framework.compat import coreapi, coreschema
 class CardFilterBackend(filters.BaseFilterBackend):
 
     def get_schema_fields(self, view):
-        '''Настривает отображение GET параметров'''
+        '''
+        Configures the display of GET parameters.
+        '''
+
         return [
             coreapi.Field(
                 name='from_datetime',
@@ -26,12 +29,15 @@ class CardFilterBackend(filters.BaseFilterBackend):
                 location='query',
                 required=False,
                 schema=coreschema.String(
-                    description='1, 12 или 24 (одно значение)'
+                    description='1, 12 or 24 (one value)'
                 )
             )]
 
     def filter_queryset(self, request, queryset, view):
-        '''Фильтр для работы с GET параметрами в запросе'''
+        '''
+        Filter for working with GET parameters in a request.
+        '''
+
         datetime_format = '%Y-%m-%d-%H-%M'
         from_datetime = request.query_params.get('from_datetime')
         to_datetime = request.query_params.get('to_datetime')

@@ -11,8 +11,10 @@ User = get_user_model()
 
 
 class ApiURLTests(TestCase):
-    """Создаем тестовую модель артикула продукта и
-    тестовую модель пользователя."""
+    """
+    We create a test model of the product article and a test model of the user.
+    """
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -27,7 +29,10 @@ class ApiURLTests(TestCase):
         )
 
     def setUp(self):
-        """Создаем клиент гостя и зарегистрированного пользователя."""
+        """
+        We create a guest client and a registered user.
+        """
+
         self.guest_client = APIClient()
         self.authorized_client = APIClient()
         djoser_jwt_create_url = '/api/auth/jwt/create/'
@@ -43,7 +48,10 @@ class ApiURLTests(TestCase):
         )
 
     def test_urls_response_guest(self):
-        """Проверяем статус страниц для гостя."""
+        """
+        Checking the status of pages for the guest.
+        """
+
         url_status = {
             reverse('api:users-me'): HTTPStatus.UNAUTHORIZED,
             reverse('api:product-list'): HTTPStatus.UNAUTHORIZED,
@@ -63,7 +71,10 @@ class ApiURLTests(TestCase):
                 self.assertEqual(response.status_code, status_code)
 
     def test_urls_response_auth(self):
-        """Проверяем статус страниц для аутентифицированного пользователя."""
+        """
+        Checking the status of pages for an authenticated user.
+        """
+
         url_status = {
             reverse('api:users-me'): HTTPStatus.OK,
             reverse('api:product-list'): HTTPStatus.OK,

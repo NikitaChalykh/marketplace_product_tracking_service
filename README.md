@@ -1,25 +1,25 @@
-Сервис отслеживания карточек товаров маркетплейса
+Marketplace product tracking card service
 =====
 
-Описание проекта
+Project description
 ----------
-Сервис предназначен для автоматического отслеживания изменений параметров карточек товаров на маркетплейсе. Сервис позволяет получать статистические данные о состоянии карточек в заданном диапазоне дат с учетом временного интервала обновления (не чаще 1 записи в час).
+The service is designed to automatically track changes in product card parameters on the marketplace. The service allows you to receive statistical data on the state of cards in a given date range, taking into account the update time interval (no more than 1 record per hour).
 
-Проект разворачивается в следующих Docker контейнерах: web-приложение, postgresql-база данных, nginx-сервер, Redis-база данных и Celery-контейнер.
+The project is deployed in the following Docker containers: web application, postgresql database, nginx server, Redis database and Celery container.
 
-Реализована аутентификация на базе JWT-токенов, настроена админка, реализовано тестирование основных моделей и url-ов проекта. Информация об историческом состоянии карточек товаров фильтруется по диапазону дат с интервалами.
+Authentication based on JWT tokens has been implemented, the admin panel has been configured, testing of the main models and URLs of the project has been implemented. Information about the historical state of product cards is filtered by a date range with intervals.
 
-Отслеживание данных карточек реализовано в виде асинхронной Celery задачи.
+Tracking of card data is implemented as an asynchronous Celery task.
 
-Приготовлены фикстуры для заполнения БД тестовыми данными. Пароль и никнейм админа в фикстурах БД - ```admin```.
+Fixtures have been prepared for filling the database with test data. Password and nickname of the admin in the DB fixtures - ```admin```.
 
-Системные требования
+System requirements
 ----------
 * Python 3.8+
 * Docker
 * Works on Linux
 
-Стек технологий
+Technology stack
 ----------
 * Python 3.8+
 * Django 3.1
@@ -33,41 +33,41 @@
 * Redis
 * BeautifulSoup4
 
-Установка проекта из репозитория
+Installing the project from the repository
 ----------
-1. Клонирование репозитория:
+1. Cloning the repository:
 ```bash
 git clone git@contest.idacloud.ru:Nikita223/marketplace_product_tracking_service.git
 
-cd marketplace_product_tracking_service # Переходим в директорию с проектом
+cd marketplace_product_tracking_service # Go to the directory with the project
 ```
 
-2. Создайте файл ```.env``` используя ```env.example``` в качестве шаблона в папке infra
+2. Create a file ```.env``` using ```env.example``` as a template in the infra folder
 
-3. Установка и запуск приложения в контейнерах:
-```bash 
-docker-compose up -d
+3. Installing and running the application in containers:
+```bash
+docker compose up -d
 ```
 
-4. Запуск миграций, сбор статики, загрузка фикстур и запуск тестов:
-```bash 
-docker-compose exec web python manage.py migrate
+4. Running migrations, collecting statics, loading fixtures and running tests:
+```bash
+docker compose exec web python manage.py migrate
 
-docker-compose exec web python manage.py collectstatic --no-input 
+docker compose exec web python manage.py collectstatic --no-input
 
-docker-compose exec web python manage.py loaddata fixtures.json
+docker compose exec web python manage.py loaddata fixtures.json
 
-docker-compose exec web python manage.py test 
+docker compose exec web python manage.py test
 ```
 
-Работа с проектом
+Working with the project
 ----------
-Документация по работе API сервиса:
+Documentation on the API service:
 
 ```http://127.0.0.1/redoc/```
 
 ```http://127.0.0.1/swagger/```
 
-Админка сервиса:
+Admin panel service:
 
 ```http://127.0.0.1/admin/```

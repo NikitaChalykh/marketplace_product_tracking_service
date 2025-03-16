@@ -6,7 +6,10 @@ from fake_useragent import UserAgent
 
 
 def get_meta_tag(data, symbol):
-    '''Функция для обработки данных из мета-тегов'''
+    '''
+    Function for processing data from meta tags.
+    '''
+
     data = str(data)
     new_data_dict = []
     for i in range(15, len(data) + 1):
@@ -18,7 +21,10 @@ def get_meta_tag(data, symbol):
 
 
 def get_tag_for_value(data):
-    '''Функция для обработки числовых данных из тегов'''
+    '''
+    Function for processing numeric data from tags.
+    '''
+
     data = str(data)
     new_data_dict = []
     for symbol in data:
@@ -31,7 +37,10 @@ def get_tag_for_value(data):
 
 
 def get_card(vendor_code):
-    '''Функция для получения данных с сайта по артикулу'''
+    '''
+    Function for obtaining data from a website by article number.
+    '''
+
     url = 'https://www.wildberries.ru/catalog/{}/detail.aspx'.format(
         vendor_code
     )

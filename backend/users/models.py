@@ -4,18 +4,18 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
-    '''Добавляем обязательное и уникальное поле почты
-    и оставлем возможность кастомизации модели пользователей
-    '''
+    """Adding a required and unique email field
+    while keeping the possibility of customizing the user model
+    """
     email = models.EmailField(
         max_length=254,
         unique=True,
-        verbose_name='Электронная почта'
+        verbose_name="Email"
     )
 
     class Meta:
-        verbose_name = "Пользователь"
-        verbose_name_plural = "Пользователи"
+        verbose_name = "User"
+        verbose_name_plural = "Users"
 
     def __str__(self):
         return self.username

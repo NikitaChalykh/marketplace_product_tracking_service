@@ -16,7 +16,8 @@ class UserSerializer(serializers.ModelSerializer):
     def validate(self, data):
         if data.get('username') == 'me':
             raise serializers.ValidationError(
-                'Username указан неверно!')
+                'Username is incorrect!'
+            )
         return data
 
     def create(self, validated_data):

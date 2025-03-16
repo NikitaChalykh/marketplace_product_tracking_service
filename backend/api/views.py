@@ -61,7 +61,7 @@ class CardViewSet(
     queryset = Card.objects.select_related(
         'user',
         'product',
-        'product__user'
+        'product__user',
     ).all()
     serializer_class = CardSerializer
     filter_backends = (CardFilterBackend,)

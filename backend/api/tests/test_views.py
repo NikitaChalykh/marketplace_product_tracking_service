@@ -12,7 +12,7 @@ User = get_user_model()
 
 class ApiViewsTests(TestCase):
     """
-    We create a test model of the product article and a test model of the user.
+    Creating a test model of the product article and a test model of the user.
     """
 
     @classmethod
@@ -30,7 +30,7 @@ class ApiViewsTests(TestCase):
 
     def setUp(self):
         """
-        We create a guest client and a registered user.
+        Creating a guest client and a registered user.
         """
 
         self.authorized_client = APIClient()
